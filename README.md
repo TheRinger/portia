@@ -23,7 +23,7 @@ Prerequisites
 
 You might need to run the following commands to install the required tools & libraries before building portia:
 
-    apt-get install python-pip python-dev libxml2-dev libxslt1-dev libffi-dev libssl-dev
+    apt-get install git python-pip python-dev libxml2-dev libxslt1-dev libffi-dev libssl-dev
     pip install virtualenv
 
 Installation
@@ -31,27 +31,48 @@ Installation
 
 The recommended way to install dependencies is to use __virtualenv__:
 
+Create the virtual environment. (change "YOUR_ENV_NAME" to a name you choose as the name of your virtual environment..):
+
+    cd
     virtualenv YOUR_ENV_NAME --no-site-packages
 
 and then do:
 
-    source YOUR_ENV_NAME/bin/activate
-    cd slyd
+    source YOUR_ENV_NAME/bin/activate   ## This should display your virtualenv name in parenthesis before the dir path prompt:
+    cd YOUR_ENV_NAME
+    git clone https://github.com/scrapinghub/portia
+    
+cd into the cloned portia/slyd:
+
+    cd portia/slyd
+    pip install twisted
+    pip install scrapy
     pip install -r requirements.txt
+    
+Verify installation:
+
+    pip list
+
+Running portia:
+==============:
+
+    cd slyd
+    twistd -n slyd
+    
 
 As `slybot` is a `slyd` dependency, it will also get installed.
 
 **Note:** you may need to use `sudo` or `pip --user` if you get permissions problems while installing.
 
-Running portia
-==============
 
-First, you need to start the ui and create a project. Run __slyd__ using:
 
-	cd slyd
-	twistd -n slyd
 
 and point your browser to: `http://localhost:9001/static/main.html`
+
+if running on digitalocean or other vps use: `http://(your_ip_address):9001/static/main.html`
+
+=================================
+
 
 Choose the site you want to scrape and create a project. Every project is created with a default spider named after the domain of the site you are scraping. When you are ready, you can run your project with __slybot__ to do the actual crawling/extraction.
 
