@@ -53,6 +53,28 @@ Verify installation:
 
     pip list
 
+compare to:
+
+    cat requirements.txt
+    
+Install Service identity module: 
+
+Please install it from <https://pypi.python.org/pypi/service_identity>. 
+
+Without the service_identity module and a recent enough pyOpenSSL tosupport it, Twisted can perform only rudimentary TLS client hostnameverification.  Many valid certificate/hostname mappings may be rejected.
+
+Optionally you can add this by:
+
+    pip install characteristic
+    pip install pyOpenSSL
+    pip install pyasn1
+    pip install pyasn1-modules
+   
+or just type
+
+    pip install service_identity
+    
+    
 Running portia:
 ==============:
 
